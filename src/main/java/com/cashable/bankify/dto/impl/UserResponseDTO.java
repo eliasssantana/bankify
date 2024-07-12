@@ -1,14 +1,16 @@
 package com.cashable.bankify.dto.impl;
 
+import com.cashable.bankify.domain.model.Card;
+import com.cashable.bankify.domain.model.User;
+
 import java.util.List;
 import java.util.Optional;
-
-import com.cashable.bankify.domain.model.User;
 
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
 
-public record UserRequestDTO(
+public record UserResponseDTO(
+    String id,
     String name,
     AccountDto account,
     CardDto card,
@@ -16,14 +18,16 @@ public record UserRequestDTO(
     List<NewsDto> news
 ) {
 
-    public User toModel() {
-        User model = new User();
-        model.setName(this.name);
-        model.setAccount(Optional.of(this.account.toModel()).orElse(null));
-        model.setCard(Optional.of(this.card.toModel()).orElse(null));
-        model.setFeatures(Optional.ofNullable(this.features).orElse(emptyList()).stream().map(FeatureDto::toModel).collect(toList()));
-        model.setNews(Optional.ofNullable(this.news).orElse(emptyList()).stream().map(NewsDto::toModel).collect(toList()));
-        return model;
+    public UserResponseDTO(User user){
+
+        this(
+                user.getId(),
+                user.getName(),
+                Optional.of(user.getAccount()).map(AccountDto::new).orElse(null),
+                Optional.of(user.getCard()).map(CardDto::new).orElse(null),
+                Optional.of(user.getFeatures()).orElse(emptyList()).stream().map(FeatureDto::new).toList(),
+                Optional.of(user.getNews()).orElse(emptyList()).stream().map(NewsDto::new).toList()
+        );
     }
     
 }

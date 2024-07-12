@@ -1,12 +1,12 @@
-package com.cashable.bankify.domain.service;
+package com.cashable.bankify.service;
 
 import com.cashable.bankify.domain.model.User;
-
-import java.util.Optional;
+import com.cashable.bankify.dto.impl.UserIdDTO;
+import com.cashable.bankify.dto.impl.UserResponseDTO;
 
 public interface UserService {
 
-    Optional<User> findById(Long id);
+    UserResponseDTO findById(String id);
 
-    User create(User user);
+    UserIdDTO create(User user);
 }
