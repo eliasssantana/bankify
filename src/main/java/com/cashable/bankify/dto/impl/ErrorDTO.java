@@ -1,4 +1,4 @@
-package com.cashable.bankify.dto;
+package com.cashable.bankify.dto.impl;
 
 import java.time.LocalDate;
 
