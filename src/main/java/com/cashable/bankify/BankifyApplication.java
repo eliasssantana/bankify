@@ -8,7 +8,7 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 
 @SpringBootApplication
-@OpenAPIDefinition(servers = { @Server(url = "/", description = "Default Server URL")},
+@OpenAPIDefinition(servers = { @Server(url = "/v1", description = "Default Server URL")},
 		info = @Info(title = "Bankify", version = "1", description = "API RESTful da aplicação Bankify")
 		)
 public class BankifyApplication {
