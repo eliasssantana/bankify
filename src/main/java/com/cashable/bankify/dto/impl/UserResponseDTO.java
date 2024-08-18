@@ -1,14 +1,11 @@
 package com.cashable.bankify.dto.impl;
 
-import com.cashable.bankify.domain.model.Card;
 import com.cashable.bankify.domain.model.User;
 
 import java.util.List;
 import java.util.Optional;
 
 import static java.util.Collections.emptyList;
-import static java.util.stream.Collectors.toList;
-
 public record UserResponseDTO(
     String id,
     String name,
